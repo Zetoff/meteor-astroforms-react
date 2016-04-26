@@ -25,8 +25,8 @@ class TextField extends React.Component {
   render() {
     return (
       <div className="textfield-default">
-        <label>{this.props.label}</label>
-        <input {...this.props.htmlAttributes} value={this.state.value} onChange={this.handleChange} />
+        <label>{this.props.label}&nbsp;</label>
+        {this.props.prefix}<input {...this.props.htmlAttributes} value={this.state.value} onChange={this.handleChange} /> {this.props.suffix}
       </div>
     );
   }
