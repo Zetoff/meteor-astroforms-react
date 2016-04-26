@@ -1,7 +1,7 @@
 Package.describe({
   name: 'zetoff:astroforms-react',
   version: '1.0.0',
-  summary: 'Forms API for Meteor Astronomy',
+  summary: 'Astroforms React implementation',
   git: 'https://github.com/jagi/meteor-astronomy-validators.git'
 });
 
