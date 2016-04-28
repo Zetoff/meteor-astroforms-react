@@ -43,7 +43,7 @@ class Form extends React.Component {
       return this.props.children;
     } else {
       // no children specified, show all fields
-      const fieldExceptions = this.getFieldExceptions();
+      const fieldExceptions = this.getFieldsToOmit();
       return _.map(this.props.astroClass.getInputsNames(), (fieldName) => {
         if (_.indexOf(fieldExceptions, fieldName) < 0) {
           return (
