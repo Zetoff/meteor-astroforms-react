@@ -36,6 +36,19 @@ class Field extends React.Component {
     this.context.doc.set(this.props.name, value);
   }
   /**
+   * Retrieve field value.
+   *
+   * @return {mixed}
+   *  Field value, null if document not set
+   */
+  getFieldValue() {
+    if (this.context.doc) {
+      return this.context.doc.get(this.props.name);
+    } else {
+      return null;
+    }
+  }
+  /**
    * Validate this document field and set validation results to the state so it
    * can be passed to the child component.
    *
@@ -77,10 +90,17 @@ class Field extends React.Component {
       return this.props[name] || value;
     });
   }
+  /**
+   * Get value taking defaults into consideration.
+   *
+   * @return {mixed}
+   *  Field value, fallbacks to default value
+   */
   getValue() {
     // try to retrieve the document value first
-    if (this.context.doc) {
-      return this.context.doc.get(this.props.name);
+    const value = this.getFieldValue();
+    if (value) {
+      return value;
     }
     // try to retrieve input default, but give priority to recieved prop
     else if (_.has(this.getInput(), 'default')) {
