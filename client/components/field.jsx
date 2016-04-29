@@ -124,6 +124,13 @@ class Field extends React.Component {
       value: this.getValue(),
       htmlAttributes: this.getHtmlAttributes(),
       validation: this.state.validation,
+      field: {
+        // wrap methods so the context cannot be changed
+        update: (value) => { return this.updateField(value); },
+        set: (value) => { return this.setFieldValue(value); },
+        get: () => { return this.getFieldValue(); },
+        validate: () => { return this.validateField(); },
+      },
     }, _.omit(this.props, 'context', 'actions'), this.getInputProps());
   }
   render() {
