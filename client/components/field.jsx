@@ -6,7 +6,10 @@ import formContextTypes from '../utils/form_context_types.js';
 class Field extends React.Component {
   getHtmlAttributes() {
     // retrieve html attr, but give priority to the recieved ones
-    return _.mapValues(this.getInput().getHtmlAttributes(), (value, name) => {
+    const htmlAttributes = _.extend({
+      ref: this.props.name,
+    }, this.getInput().getHtmlAttributes());
+    return _.mapValues(htmlAttributes, (value, name) => {
       return this.props[name] || value;
     });
   }
